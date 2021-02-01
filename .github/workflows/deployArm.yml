@@ -20,7 +20,7 @@ jobs:
       with:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
         resourceGroupName: ${{ secrets.AZURE_RG }}
-        template: ./azuredeploy.json
+        template: ./azureDeploy.json
         parameters: storageAccountType=Standard_LRS
 
       # output containerName variable from template
