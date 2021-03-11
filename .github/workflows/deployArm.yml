@@ -2,7 +2,7 @@ on: [push]
 name: Azure ARM
 jobs:
   build-and-deploy:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
 
       # Checkout code
@@ -26,8 +26,8 @@ jobs:
     #       location="USGovVirginia"
 
       # output containerName variable from template
-    - name: test pwsh
-      shell: pwsh
+    - name: test powershell windows
+      shell: powershell
       env:
         TENANT_ID: "8a09f2d7-8415-4296-92b2-80bb4666c5fc"
         CLIENT_ID: "c58adfec-3e2e-4f52-a280-a82e2fbde1db"
@@ -41,7 +41,7 @@ jobs:
         Install-Module Az -AllowClobber -SkipPublisherCheck -Force
         $pw = ConvertTo-SecureString -String $env:SECRET -Force -AsPlainText
         $cred = New-Object System.Management.PSCredential($env:CLIENT_ID, $pw)
-        Connect-AzAccount -ServicePrincipal -Credential $cred -TenantId $env:TENANT_ID
+        Connect-AzAccount -ServicePrincipal -Credential $cred -TenantId $env:TENANT_ID -Environment AzureUSGovernment
         Select-AzSubscription -SubscriptionId $env:SUBSCRIPTION_ID
         Get-AzResourceGroup | select *Name*
         
