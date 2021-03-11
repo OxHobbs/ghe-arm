@@ -36,6 +36,7 @@ jobs:
         SECRET: ${{ secrets.AZURE_SECRET }}
 
       run: |
+        Write-Output $PSVersionTable
         Get-Module -ListAvailable Az*
         Get-ChildItem ./
         Install-Module Az -AllowClobber -SkipPublisherCheck -Force
