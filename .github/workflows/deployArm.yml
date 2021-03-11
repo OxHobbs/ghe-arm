@@ -37,7 +37,7 @@ jobs:
 
       run: |
         Write-Output $PSVersionTable
-        Get-Module -ListAvailable Az*
+        # Get-Module -ListAvailable Az* | format-table Name
         Get-ChildItem ./
         Install-Module Az -AllowClobber -SkipPublisherCheck -Force
         $pw = ConvertTo-SecureString -String $env:SECRET -Force -AsPlainText
@@ -45,6 +45,6 @@ jobs:
         Connect-AzAccount -ServicePrincipal -Credential $cred -TenantId $env:TENANT_ID -Environment AzureUSGovernment
         Select-AzSubscription -SubscriptionId $env:SUBSCRIPTION_ID
         Get-AzResourceGroup | select *Name*
-        
+        New-AzResourceGroupDeployment -ResourceGroupName ghe -TemplateFile ./azureDeploy.json -storageAccountType "Standard_LRS"
         
   # echo ${{ steps.deploy.outputs.containerName }}
