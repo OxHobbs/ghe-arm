@@ -28,8 +28,9 @@ jobs:
       # output containerName variable from template
     - name: test pwsh
       shell: pwsh
-      run: >
-        Write-Output $psversiontable
+      run: |
+        Get-Module -ListAvailable Az*
+        Get-ChildItem ./
         
         
   # echo ${{ steps.deploy.outputs.containerName }}
