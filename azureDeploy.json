@@ -21,6 +21,12 @@
       "metadata": {
         "description": "Location for all resources."
       }
+    },
+    "this-is-a_TEST": {
+      "type": "string",
+      "metadata": {
+        "description": "test for dash"
+      }
     }
   },
   "variables": {

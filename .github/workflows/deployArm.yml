@@ -26,7 +26,7 @@ jobs:
     #       location="USGovVirginia"
 
       # output containerName variable from template
-    - name: test powershell windows
+    - name: Deploy ADF ARM templates
       shell: powershell
       env:
         TENANT_ID: "8a09f2d7-8415-4296-92b2-80bb4666c5fc"
@@ -45,6 +45,5 @@ jobs:
         Connect-AzAccount -ServicePrincipal -Credential $cred -TenantId $env:TENANT_ID -Environment AzureUSGovernment
         Select-AzSubscription -SubscriptionId $env:SUBSCRIPTION_ID
         Get-AzResourceGroup | select *Name*
-        New-AzResourceGroupDeployment -ResourceGroupName ghe -TemplateFile ./azureDeploy.json -storageAccountType "Standard_LRS"
-        
-  # echo ${{ steps.deploy.outputs.containerName }}
+        New-AzResourceGroupDeployment -ResourceGroupName ghe -TemplateFile ./azureDeploy.json -storageAccountType "Standard_LRS" -this-is-a_TEST "test"
+
