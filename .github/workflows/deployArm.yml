@@ -101,7 +101,7 @@ jobs:
         Write-Output $params
 
 
-        New-AzResourceGroupDeployment -TemplateFile ./P-DWADF/azureDeploy.json @params
+        New-AzResourceGroupDeployment -storageAccountType "Standard_LRS" -TemplateFile ./azureDeploy.json @params
 
 
         # New-AzResourceGroupDeployment -ResourceGroupName ghe -TemplateFile ./azureDeploy.json -storageAccountType "Standard_LRS" -this-is-a_TEST test-adf-adkjf_djf_FJ
