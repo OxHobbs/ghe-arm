@@ -48,13 +48,15 @@ jobs:
         # Get-AzResourceGroup | select *Name*
 
         function secure($title, $str) {
-            Write-Output "Attempting to convert $title"
+            Write-Output (New-Object -TypeName PSObject -Property @{Name = $title})
             if (-not $str) {
               Write-Output "No string in payload"
+              Write-Output (New-Object -TypeName PSObject -Property @{Name = $title, Payload = 'NO'})
               return "NO PAYLOAD"
             }
 
             Write-Output "String has payload"
+            Write-Output (New-Object -TypeName PSObject -Property @{Name = $title, Payload = 'YES'})
             return ConvertTo-SecureString -AsPlainText -Force -String $str
         }
 
