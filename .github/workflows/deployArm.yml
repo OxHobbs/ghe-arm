@@ -57,7 +57,7 @@ jobs:
         # Get-AzResourceGroup | select *Name*
 
         function secure($title, $str) {
-            Write-Output (New-Object -TypeName PSObject -Property @{Name = $title})
+            # Write-Output (New-Object -TypeName PSObject -Property @{Name = $title})
             if (-not $str) {
               return ConvertTo-SecureString -AsPlainText -Force -String "NO PAYLOAD"
             }
