@@ -64,8 +64,7 @@ jobs:
         $o = New-Object -TypeName PSObject -Property @{StoredTitle = $stored}
         Write-Output $o
 
-        Write-Output (New-Object -TypeName PSObject -Property @{Title = "ADF_Synapse_conn_connectionstring"})
-        Write-Output "ADF_Synapse_Conn_connectionString:" + $env:ADF_SYNAPSE_CONN_CONNECTIONSTRING + secure($env:ADF_SYNAPSE_CONN_CONNECTIONSTRING)
+        Write-Output (New-Object -TypeName PSObject -Property @{Title = "ADF_Synapse_conn_connectionstringg"})
         $params = @{
           ADF_SYNAPSE_CONN_CONNECTIONSTRING = secure("ADF_SYNAPSE_CONN_STRING", $env:ADF_SYNAPSE_CONN_CONNECTIONSTRING)
         }
