@@ -22,8 +22,62 @@
         "description": "Location for all resources."
       }
     },
-    "this-is-a_TEST": {
-      "type": "string",
+    "ADF_Synapse_Conn_connectionString": {
+      "type": "SecureString",
+      "metadata": {
+        "description": "test for dash"
+      }
+    },
+    "pdwdb1_pexplcstg001_password": {
+      "type": "SecureString",
+      "metadata": {
+        "description": "test for dash"
+      }
+    },
+    "LS_ADLS_DI_001_accountKey": {
+      "type": "SecureString",
+      "metadata": {
+        "description": "test for dash"
+      }
+    },
+    "LS_PDWALS_accountKey": {
+      "type": "SecureString",
+      "metadata": {
+        "description": "test for dash"
+      }
+    },
+    "ls_Neo_EDP_connectionString": {
+      "type": "SecureString",
+      "metadata": {
+        "description": "test for dash"
+      }
+    },
+    "pdwadls_mi_ls_accountKey": {
+      "type": "SecureString",
+      "metadata": {
+        "description": "test for dash"
+      }
+    },
+    "pdwdb1_pdwadls_connectionString": {
+      "type": "SecureString",
+      "metadata": {
+        "description": "test for dash"
+      }
+    },
+    "pdwdb1_pdwadls_password": {
+      "type": "SecureString",
+      "metadata": {
+        "description": "test for dash"
+      }
+    },
+    "pdwdb1_pexplcstg001_connectionString": {
+      "type": "SecureString",
+      "metadata": {
+        "description": "test for dash"
+      }
+    },
+    "vl231db1_integrify_connectionString": {
+      "type": "SecureString",
       "metadata": {
         "description": "test for dash"
       }
