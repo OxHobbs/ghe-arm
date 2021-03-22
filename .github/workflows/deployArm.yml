@@ -67,6 +67,9 @@ jobs:
           ADF_SYNAPSE_CONN_CONNECTIONSTRING = secure("ADF_SYNAPSE_CONN_STRING", $env:ADF_SYNAPSE_CONN_CONNECTIONSTRING)
         }
 
+        $paramsObject = New-Object -TypeName PSObject -Property $params
+        Write-Output $paramsObject
+
 
         # New-AzResourceGroupDeployment -ResourceGroupName ghe -TemplateFile ./azureDeploy.json -storageAccountType "Standard_LRS" -this-is-a_TEST test-adf-adkjf_djf_FJ
 
