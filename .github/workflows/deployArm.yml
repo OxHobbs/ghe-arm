@@ -47,18 +47,21 @@ jobs:
         Select-AzSubscription -SubscriptionId $env:SUBSCRIPTION_ID
         Get-AzResourceGroup | select *Name*
 
-        function secure($str) {
+        function secure($title, $str) {
+            Write-Output "Attempting to convert $title"
             if (-not $str) {
               Write-Output "No string in payload"
               return $null
             }
+
+            Write-Output "String has payload"
             return ConvertTo-SecureString -AsPlainText -Force -String $str
         }
 
 
         Write-Output "ADF_Synapse_Conn_connectionString:" + $env:ADF_SYNAPSE_CONN_CONNECTIONSTRING
         $params = @{
-          ADF_SYNAPSE_CONN_CONNECTIONSTRING = secure($env:ADF_SYNAPSE_CONN_CONNECTIONSTRING)
+          ADF_SYNAPSE_CONN_CONNECTIONSTRING = secure("ADF_SYNAPSE_CONN_STRING, $env:ADF_SYNAPSE_CONN_CONNECTIONSTRING)
         }
 
 
