@@ -80,7 +80,6 @@ jobs:
 
         $params = @{
           ResourceGroupName = "P-DWAnalytics-Dev"
-          factoryName = "P-DWADF-Dev" 
           ADF_Synapse_Conn_connectionString = secure($env:ADF_SYNAPSE_CONN_CONNECTIONSTRING)
           LS_ADLS_DI_001_accountKey = secure($env:LS_ADLS_DI_001_ACCOUNTKEY)
           LS_PDWALS_accountKey = secure($env:LS_PDWALS_ACCOUNTKEY)
