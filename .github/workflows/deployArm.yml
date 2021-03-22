@@ -34,24 +34,23 @@ jobs:
         SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION }}
         OBJECT_ID: "7e402f4f-1f4b-4f83-8aa1-cccee5d59232"
         SECRET: ${{ secrets.AZURE_SECRET }}
-        ADF_Synapse_Conn_connectionString: ${{ secrets.ADF_SYNAPSE_CONN_CONNECTIONSTRING }}
+        ADF_SYNAPSE_CONN_CONNECTIONSTRING: ${{ secrets.ADF_SYNAPSE_CONN_CONNECTIONSTRING }}
 
       run: |
-        Write-Output $PSVersionTable
         # Get-Module -ListAvailable Az* | format-table Name
-        Get-ChildItem ./
+        # Get-ChildItem ./
         Install-Module Az -AllowClobber -SkipPublisherCheck -Force
         $pw = ConvertTo-SecureString -String $env:SECRET -Force -AsPlainText
         $cred = New-Object System.Management.Automation.PSCredential($env:CLIENT_ID, $pw)
-        Connect-AzAccount -ServicePrincipal -Credential $cred -TenantId $env:TENANT_ID -Environment AzureUSGovernment
-        Select-AzSubscription -SubscriptionId $env:SUBSCRIPTION_ID
-        Get-AzResourceGroup | select *Name*
+        $null = Connect-AzAccount -ServicePrincipal -Credential $cred -TenantId $env:TENANT_ID -Environment AzureUSGovernment
+        $null = Select-AzSubscription -SubscriptionId $env:SUBSCRIPTION_ID
+        # Get-AzResourceGroup | select *Name*
 
         function secure($title, $str) {
             Write-Output "Attempting to convert $title"
             if (-not $str) {
               Write-Output "No string in payload"
-              return $null
+              return "NO PAYLOAD"
             }
 
             Write-Output "String has payload"
@@ -59,6 +58,7 @@ jobs:
         }
 
 
+        Write-Output "ADF_Synapse_Conn_connectionString"
         Write-Output "ADF_Synapse_Conn_connectionString:" + $env:ADF_SYNAPSE_CONN_CONNECTIONSTRING
         $params = @{
           ADF_SYNAPSE_CONN_CONNECTIONSTRING = secure("ADF_SYNAPSE_CONN_STRING", $env:ADF_SYNAPSE_CONN_CONNECTIONSTRING)
