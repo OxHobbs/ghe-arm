@@ -34,6 +34,7 @@ jobs:
         SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION }}
         OBJECT_ID: "7e402f4f-1f4b-4f83-8aa1-cccee5d59232"
         SECRET: ${{ secrets.AZURE_SECRET }}
+        ADF_Synapse_Conn_connectionString: ${{ secrets.ADF_SYNAPSE_CONN_CONNECTIONSTRING }}
 
       run: |
         Write-Output $PSVersionTable
@@ -45,5 +46,21 @@ jobs:
         Connect-AzAccount -ServicePrincipal -Credential $cred -TenantId $env:TENANT_ID -Environment AzureUSGovernment
         Select-AzSubscription -SubscriptionId $env:SUBSCRIPTION_ID
         Get-AzResourceGroup | select *Name*
-        New-AzResourceGroupDeployment -ResourceGroupName ghe -TemplateFile ./azureDeploy.json -storageAccountType "Standard_LRS" -this-is-a_TEST test-adf-adkjf_djf_FJ
+
+        function secure($str) {
+            if (-not $str) {
+              Write-Output "No string in payload"
+              return $null
+            }
+            return ConvertTo-SecureString -AsPlainText -Force -String $str
+        }
+
+
+        Write-Output "ADF_Synapse_Conn_connectionString:" + $env:ADF_SYNAPSE_CONN_CONNECTIONSTRING
+        $params = @{
+          ADF_SYNAPSE_CONN_CONNECTIONSTRING = secure($env:ADF_SYNAPSE_CONN_CONNECTIONSTRING)
+        }
+
+
+        # New-AzResourceGroupDeployment -ResourceGroupName ghe -TemplateFile ./azureDeploy.json -storageAccountType "Standard_LRS" -this-is-a_TEST test-adf-adkjf_djf_FJ
 
