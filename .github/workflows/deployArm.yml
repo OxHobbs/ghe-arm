@@ -8,6 +8,7 @@ jobs:
       # Checkout code
     - uses: actions/checkout@main
 
+    # Go
     #   # Log into Azure
     # - uses: azure/login@v1
     #   with:
