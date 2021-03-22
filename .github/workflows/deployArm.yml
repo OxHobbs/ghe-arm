@@ -68,6 +68,8 @@ jobs:
         $params = @{
           ADF_SYNAPSE_CONN_CONNECTIONSTRING = secure("ADF_SYNAPSE_CONN_STRING", $env:ADF_SYNAPSE_CONN_CONNECTIONSTRING)
         }
+        Write-Output (New-Object -TypeName PSObject -Property @{Title = "ADF Synapse Connection String"; Payload = $params.ADF_SYNAPSE_CONN_CONNECTIONSTRING})
+
 
         $paramsObject = New-Object -TypeName PSObject -Property $params
         Write-Output $paramsObject
